@@ -1,0 +1,40 @@
+// Object with clothes
+const clothes = {
+  jacket: 1900,
+  pants: 1088,
+  coat: 1344
+};
+
+/****** 1 variant ******/
+// executor function
+const myExecutor = (resolve, reject) => {
+  if(clothes.jacket > 0){
+    resolve('Jacket order processed.');
+  } else{
+    reject('That item is sold out.');
+  }
+}
+
+// function that return Promise object
+function orderJacket(){
+  return new Promise(myExecutor);
+}
+/****** end 1 variant ******/
+
+/****** 2 variant ******/
+
+function orderJacket(){
+  return new Promise((resolve, reject) => {
+  if(clothes.jacket > 0){
+    resolve('Jacket order processed.');
+  } else{
+    reject('That item is sold out.');
+  }
+});
+}
+/****** end 2 variant ******/
+
+// asigned to variable orderPromise value of the orderJacket function
+let orderPromise = orderJacket();
+
+console.log(orderPromise)
